@@ -7,8 +7,6 @@ public class NPC : IBattleSystem
     public double XPWhenDefeated { get; set; }
     public double BaseDamage { get; set; }
     public bool SpecialAttack { get; set; }
-    public List<string> DropTable = new List<string>();
-
     public bool IsAlive => HP > 0;
 
     public void TakeDamage(double amount)

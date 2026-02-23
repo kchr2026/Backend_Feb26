@@ -15,15 +15,11 @@ public class Player : IBattleSystem
     /// </summary>
     public double Mana { get; private set; }
     /// <summary>
-    /// List collection for the Stats field
-    /// </summary>
-    public List<string>? Stats = new List<string>();
-    /// <summary>
     /// Character class (mage, warrior, ranger)
     /// </summary>
     public CharacterClass? CharacterClass { get; set; }
 
-    public double BaseDamage { get; private set; } = 30;
+    public double BaseDamage { get; private set; } = 10;
 
     public bool IsAlive => HP > 0; // if the player has more than 0 Hitpoints, this value is true, else it is false.
 
@@ -42,12 +38,11 @@ public class Player : IBattleSystem
     /// <param name="mana">Mana</param>
     /// <param name="stats">Overall stats</param>
     /// <param name="character">type of char class</param>
-    public Player(string name, double hp, double mana, List<string> stats, CharacterClass character)
+    public Player(string name, double hp, double mana, CharacterClass character)
     {
         Name = name;
         HP = hp;
         Mana = mana;
-        Stats = stats;
         CharacterClass = character;
     }
 

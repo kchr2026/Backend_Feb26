@@ -10,11 +10,23 @@ class Program
 
         // calc.RunCalculator();
 
-        var celcius = TemperatureConverter.ConvertToCelsius(20);
-        Console.WriteLine(celcius);
-        var fahren = TemperatureConverter.ConvertToFahrenheit(celcius);
-        Console.WriteLine(fahren);
+        // var celcius = TemperatureConverter.ConvertToCelsius(20);
+        // Console.WriteLine(celcius);
+        // var fahren = TemperatureConverter.ConvertToFahrenheit(celcius);
+        // Console.WriteLine(fahren);
 
-        var playerOne = new Player("", 200, 250, [""], new CharacterClass("Warrior", "Helmet", "Chainmail", "Platelegs", 2.2, "Sword", 1));
+        var warrior = new CharacterClass(build: "Warrior", head: "Helmet", body: "Armor", feet: "Platelegs", multiplier: 1.2, weapon: "Sword", baseLevel: 1);
+        var player = new Player(name: "Rambo", hp: 100, mana: 0, character: warrior);
+
+        var npc = new NPC
+        {
+            TypeOfFoe = "Goblin",
+            XPWhenDefeated = 30,
+            HP = 100,
+            BaseDamage = 7
+        };
+
+        var battle = new BattleEngine();
+        battle.Fight(player, npc);
     }
 }
