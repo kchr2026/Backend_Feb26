@@ -5,7 +5,7 @@ public class LootEntry
     public int MinimumAmount { get; }
     public int MaximumAmount { get; }
 
-    public LootEntry(string itemName, int weigth, int minimumAmount, int maximumAmount)
+    public LootEntry(string itemName, int weigth, int minimumAmount = 1, int maximumAmount = 1)
     {
         if (weigth <= 0)
         {

@@ -1,5 +1,14 @@
-# C# Basic Lessons Week 1
+# KH MUD v1.0.0
 
+
+### Depencencies
+    * Spectre Console
+    * Pipewire(?)
+    * FFMpeg(?)
+    * 
+```sh
+dotnet add package Spectre.Console
+```
 
 
 ### Gitignore template file for .NET Projects

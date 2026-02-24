@@ -53,7 +53,7 @@ public class BattleEngine
                     Console.WriteLine($"Items looted: {item} : {amount}");
                 }
             }
-            Console.WriteLine($"Items currently in inventory: {player.Inventory}");
+            Console.WriteLine($"Items currently in inventory : {player.Inventory}");
         }
         else
         {

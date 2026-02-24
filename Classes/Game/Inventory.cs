@@ -26,6 +26,6 @@ public class Inventory
         {
             return "Inventory: (Empty)";
         }
-        return string.Join(", ", _items.Select(keyValuePairs => $"{keyValuePairs.Key} x{keyValuePairs.Value}"));
+        return string.Join(", ", _items.Select(keyValuePairs => $"{keyValuePairs.Key} : {keyValuePairs.Value}"));
     }
 }

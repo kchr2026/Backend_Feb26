@@ -26,8 +26,13 @@ class Program
             BaseDamage = 7
         };
 
+        npc.DropTable.Add(new LootEntry("Coins", weigth: 60, minimumAmount: 3, maximumAmount: 30));
+        npc.DropTable.Add(new LootEntry("Health Restoration Potion", weigth: 25, minimumAmount: 1, maximumAmount: 2));
+        npc.DropTable.Add(new LootEntry("Rusty Dagger", weigth: 10));
+
         var battle = new BattleEngine();
         battle.Fight(player, npc);
 
+        
     }
 }
