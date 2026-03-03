@@ -30,7 +30,7 @@ public static class UI
     {
         var prompt = new SelectionPrompt<string>()
             .Title($"[bold]What would you like to do {player.Name}?[/]")
-            .AddChoices("Walk", "Attack", "View inventory", "Party", "Recruit", "Exit");
+            .AddChoices("Main Menu", "Walk", "Attack", "View inventory", "Party", "Recruit", "Save Game", "Exit");
 
         return AnsiConsole.Prompt(prompt);
     }

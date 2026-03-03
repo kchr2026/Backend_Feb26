@@ -39,48 +39,41 @@ class Program
 
         // Create a new player
         AnsiConsole.Clear();
-        var name = UI.AskPlayerForName();
-        var build = UI.GetCharacterBuild();
 
-        // get the different starter classes
-        var starterClasses = build switch
-        {
-            CharacterBuild.Warrior => new CharacterClass(build, 1.1, "Sword"),
-            CharacterBuild.Mage => new CharacterClass(build, 1.1, "Staff"),
-            CharacterBuild.Ranger => new CharacterClass(build, 1.1, "Bow"),
-            CharacterBuild.Healer => new CharacterClass(build, 1.1, "Wand"),
-            _ => new CharacterClass(build, 1.1, "Stick")
-        };
+        var player = MainMenu.StartMenu();
 
         var goblin = NPCHelper.CreateNPCFromTempate(NPCHelper.CreateGoblinNPC());
 
-        state.Player = new Player(name, starterClasses);
+
 
         // Main game loop
         while (state.Screen != GameScreen.Exit)
         {
             AnsiConsole.Clear();
-            AnsiConsole.MarkupLine($"[bold]{state.Player.Name}[/] | {state.Player.CharacterClass} | HP : {state.Player.HP}");
+            AnsiConsole.MarkupLine($"[bold]{player.Player}[/] | {player.Player.CharacterClass} | HP : {player.Player.HP}");
 
-            var choices = UI.MainActionPrompt(state.Player);
+            var choices = UI.MainActionPrompt(player.Player);
 
             switch (choices)
             {
                 case "Walk":
-                    NPCHelper.HandleEncounters(state);
+                    NPCHelper.HandleEncounters(player);
                     break;
                 case "Attack":
-                    state.CurrentEnemy = goblin;
-                    BattleEngine.RunBattle(state);
+                    player.CurrentEnemy = goblin;
+                    BattleEngine.RunBattle(player);
                     break;
                 case "View inventory":
-                    UI.ViewInventory(state.Player);
+                    UI.ViewInventory(player.Player);
                     break;
                 case "Party":
-                    UI.ViewPartyMembers(state.Player);
+                    UI.ViewPartyMembers(player.Player);
                     break;
                 case "Recruit":
-                    NPCHelper.HandlePartyMemberRecruitment(state);
+                    NPCHelper.HandlePartyMemberRecruitment(player);
+                    break;
+                case "Save Game":
+                    SaveGameService.Save(SaveGameService.DefaultSaveFileName(), SaveGameMapper.MapSave(player));
                     break;
                 case "Exit":
                     state.Screen = GameScreen.Exit;
