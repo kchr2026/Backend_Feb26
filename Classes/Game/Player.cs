@@ -19,6 +19,8 @@ public class Player : ImprovedBattleEngine
 
     public Inventory Inventory { get; } = new Inventory();
 
+    public List<Party> PartyMembers { get; } = new List<Party>();
+
     public Player(string name, int attackSpeed, int accuracy, int critChance, double baseDamage, CharacterClass build)
         : base(hp: 100, mana: 50)
     {
