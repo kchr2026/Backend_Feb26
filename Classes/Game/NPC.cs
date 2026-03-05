@@ -1,14 +1,26 @@
-public class NPC
+public class NPC : ImprovedBattleEngine
 {
-    public string Name { get; set; } = "Goblin";
-    public double HP { get; set; } = 30;
-    public double BaseDamage { get; set; } = 7;
     public List<LootEntry> DropTable { get; } = new List<LootEntry>();
-    public bool IsAlive => HP > 0;
 
-    public void TakeDamage(double amount)
+    public override string Name { get; }
+
+    public override int AttackSpeed { get; }
+
+    public override int Accuracy { get; }
+
+    public override int CritChance { get; }
+
+    public override double BaseDamage { get; }
+
+    public double XPWhenDefeated { get; set; } = 25;
+
+    public NPC(string name, double hp, double baseDamage, int attackSpeed, int accuracy, int critChance) : base(hp, mana: 0)
     {
-        HP = Math.Max(0, HP - amount);
+        Name = name;
+        BaseDamage = baseDamage;
+        AttackSpeed = attackSpeed;
+        Accuracy = accuracy;
+        CritChance = critChance;
     }
 
     /// <summary>

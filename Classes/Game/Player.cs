@@ -19,9 +19,6 @@ public class Player : ImprovedBattleEngine
 
     public Inventory Inventory { get; } = new Inventory();
 
-    public Party? Party { get; } = new Party();
-
-
     public Player(string name, int attackSpeed, int accuracy, int critChance, double baseDamage, CharacterClass build)
         : base(hp: 100, mana: 50)
     {
@@ -33,6 +30,11 @@ public class Player : ImprovedBattleEngine
         BaseDamage = baseDamage;
     }
 
+    /// <summary>
+    /// Previous iteration of the combat system, might be discarded in a turn-based system
+    /// </summary>
+    /// <param name="rng">Random Number Generator</param>
+    /// <returns>double</returns>
     public double DealDamage(Random rng)
     {
         int rolledDamage = rng.Next(1, 101);
